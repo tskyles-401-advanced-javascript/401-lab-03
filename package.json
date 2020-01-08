@@ -2,9 +2,9 @@
   "name": "401-lab-03",
   "version": "1.0.0",
   "description": "",
-  "main": "edit-file.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node files/edit-file.js",
+    "start": "node index.js",
     "lint": "eslint **/*.js",
     "test": "jest --verbose --coverage",
     "test-watch": "jest --watchAll --verbose --coverage",
