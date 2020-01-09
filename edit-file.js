@@ -1,15 +1,13 @@
 'use strict';
 
 const file = `${__dirname}/files/data/person.json`;
-const util = require('util');
 const fs = require('fs');
 const validator = require('./files/lib/validator');
 
-
-let readFilePromise = util.promisify(fs.readFile);
+const readfilePromise = util.promisify(fs.readFile);
 
 /**
- * async function that get data from person.json file
+ * @function - async function that gets data from file
  * @param {*} file 
  */
 async function readFile(file){
@@ -23,7 +21,10 @@ async function readFile(file){
   }
 }
 
-async function writeFile(){
+/**
+ * @function - async function that saves file after changes
+ */
+async function saveFile(){
 
   const schema = {
     firstName: { type: 'string', required: true },
@@ -34,7 +35,7 @@ async function writeFile(){
     kids: { type: 'number', required: true },
   }
 
-  try{
+  try {
     let data = await readFile(file);
     data.firstName = 'Travis';
     data.hair = { type: 'straight', color: 'brown' };
@@ -49,12 +50,15 @@ async function writeFile(){
       })
     }
   }
-  catch{
+  catch {
     throw error;
   }
 };
 
-writeFile();
+/**
+ * @module - exports readFile and saveFile
+ */
+module.exports = { readFile, saveFile };
 
 
 
