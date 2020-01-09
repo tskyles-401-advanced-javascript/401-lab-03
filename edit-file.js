@@ -59,6 +59,8 @@ async function saveFile(){
     errorHandler(error);
   }
 }
+readFile(file);
+saveFile(file);
 
 /**
  * @module - exports readFile and saveFile

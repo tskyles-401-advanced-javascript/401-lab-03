@@ -4,27 +4,25 @@ jest.mock('fs');
 const editFile = require('../../edit-file');
 
 describe('file reader module', () => {
-  const file = `${__dirname}/files/data/person.json`;
 
-  it('returns data when given good file', async () => {
+  xit('returns data when given good file', async () => {
+    const file = `${__dirname}/files/data/person.json`;
+    let data = await editFile.readFile(file);
+    expect(data).toBeDefined();
+  });
+  xit('returns an object when given good file', async () => {
+    let file = `${__dirname}/files/data/person.json`;
+
     try {
       let data = await editFile.readFile(file);
-      expect(data).toBeDefined();
+      expect(typeof(data)).toBe('object');
     }
     catch (error) {expect(error).not.toBeDefined();}
-  });
-  it('returns an object when given good file', async () => {
-    try{
-      let data = await editFile.readFile(file);
-      let objectData = await JSON.parse(data);
-      expect(typeof(objectData)).toBe('object');
-    }
-    catch (error) {expect(error).not.toBeDefined();}
-  });
-  it('returns error when given a bad file', async () => {
-    
-    const file = `${__dirname}/files/data/bad.json`;
 
+  });
+
+  it('returns error when given a bad file', async () => {
+    const file = `${__dirname}/files/data/bad.json`;
     try {
       let data = await editFile.readFile(file);
       expect(data).not.toBeDefined();
@@ -34,13 +32,20 @@ describe('file reader module', () => {
 });
 
 describe('file writer module', () => {
-  it('recieves data from reader module', () => {
+  xit('recieves data from reader module', async () => {
+    let file = `${__dirname}/../../data/person.json`;
+
+    try {
+      let data = await editFile.readFile(file);
+      expect(editFile.writeFile(data)).toBeTruthy();
+    }
+    catch (error) {expect(error).toBeFalsy();}
 
   });
-  it('successfully writes if data is valid', () => {
+  xit('successfully writes if data is valid', () => {
 
   });
-  it('throws error if data recieved is not valid', () => {
+  xit('throws error if data recieved is not valid', () => {
 
   });
 });
