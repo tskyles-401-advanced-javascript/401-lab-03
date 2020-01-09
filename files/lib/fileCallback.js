@@ -1,17 +1,14 @@
 'use strict';
 const fs = require('fs');
 
-module.exports = exports = {};
-
-
 /**
  * Wraps fs.readFile, and processes as JSON restring, returning object to the calling function
  * @param {} file - fullpath to file
  * @param {} cb - Error first callback
  */
-exports.read = (file, cb) => {
+const readFile = (file, cb) => {
   fs.readFile(file, (error, data) => {
-    if(error) {cb(error)}
+    if(error) {cb(error);}
     else {
       try {
         cb(null, JSON.parse(data.toString().trim()));
@@ -27,7 +24,9 @@ exports.read = (file, cb) => {
  * @param text
  * @param cb
  */
-exports.write = (file, text. cb) => {
+const writeFile = (file, text, cb) => {
   let buffer = Buffer.from( typeof text === 'object'? JSON.stringify(text): text);
   fs.writeFile(file, buffer, cb);
 };
+
+module.exports = { readFile, writeFile };
