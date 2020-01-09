@@ -43,7 +43,10 @@ async function writeFile(){
 
     if(validator.isValid(schema, data)){
       console.log(data);
-
+      fs.writeFile(file, JSON.stringify(data), (error) => {
+        if(error) throw error;
+        console.log('The file was saved')
+      })
     }
   }
   catch{
