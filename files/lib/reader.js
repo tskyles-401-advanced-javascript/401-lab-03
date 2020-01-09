@@ -2,15 +2,14 @@
 
 const fs = require('fs');
 const util = require('util');
-const file = `${__dirname}/data/person.json`;
 
 
-const readerCallback = (file, callback) => {
-  fs.readFile(file, (err,data) => {
-    if(err) {callback(err);}
-    else { callback(undefined, JSON.parse(data));}
-  });
+const readfilePromise = util.promisify(fs.readFile);
+const readerWithFilePromise = (file) => {
+  return readfilePromise(file)
+    .then(data => JSON.parse(data))
+    .catch(error => error);
 };
 
-module.exports = { readerCallback };
+module.exports = { readerWithFilePromise };
 
