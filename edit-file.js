@@ -2,9 +2,14 @@
 
 const file = `${__dirname}/files/data/person.json`;
 const fs = require('fs');
+const util = require('util');
 const validator = require('./files/lib/validator');
 
 const readfilePromise = util.promisify(fs.readFile);
+
+const errorHandler = (error) => {
+  throw error;
+};
 
 /**
  * @function - async function that gets data from file
@@ -12,12 +17,12 @@ const readfilePromise = util.promisify(fs.readFile);
  */
 async function readFile(file){
   try {
-    let data = await readFilePromise(file);
+    let data = await readfilePromise(file);
     let objectData = await JSON.parse(data);
     return objectData;
   }
-  catch {
-    throw error;
+  catch (error) {
+    errorHandler(error);
   }
 }
 
@@ -33,7 +38,7 @@ async function saveFile(){
     favoriteFoods: { type: 'array', required: true },
     married: { type: 'boolean', required: true },
     kids: { type: 'number', required: true },
-  }
+  };
 
   try {
     let data = await readFile(file);
@@ -46,14 +51,14 @@ async function saveFile(){
       console.log(data);
       fs.writeFile(file, JSON.stringify(data), (error) => {
         if(error) throw error;
-        console.log('The file was saved')
-      })
+        console.log('The file was saved');
+      });
     }
   }
-  catch {
-    throw error;
+  catch (error) {
+    errorHandler(error);
   }
-};
+}
 
 /**
  * @module - exports readFile and saveFile
