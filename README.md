@@ -1,29 +1,27 @@
-# LAB - 
+# LAB - 03
 
-## Project Name
+## Async
 
-### Author: Student/Group Name
+### Author: Travis Skyles
 
 ### Links and Resources
 * [submission PR](http://xyz.com)
-* [travis](http://xyz.com)
-* [back-end](http://xyz.com) (when applicable)
-* [front-end](http://xyz.com) (when applicable)
+* [travis](https://travis-ci.com/tskyles-401-advanced-javascript/401-lab-03)
 
 #### Documentation
-* [api docs](http://xyz.com/api-docs) (API servers)
-* JSDoc Comment Required for all modules and functions in all .js files
+- `jsdocs` live-server from `/out` directory
 
-### Setup
-#### `.env` requirements (where applicable)
-* `PORT` - Port Number
-* `MONGODB_URI` - URL to the running mongo instance/db
+### Modules
+  validator.js
+  edit-file.js
 
-#### How to initialize/run your server app (where applicable)
-* e.g. `npm start`
+#### How to initialize/run
+- clone repository
+- npm start
   
 #### Tests
-* How do you run tests?
+eslint - npm run lint
+tests - npm test
 
 #### UML
-Link to an image of the UML for your application and response to events
+![](assets/uml-lab03.jpg)
