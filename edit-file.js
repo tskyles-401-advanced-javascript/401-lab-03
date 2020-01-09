@@ -1,16 +1,33 @@
 'use strict';
 
-const file = `${__dirname}/files/data/person.json`;
+// const file = `${__dirname}/files/data/person.json`;
 const fs = require('fs');
 const util = require('util');
 const validator = require('./files/lib/validator');
+
+
+// use callback method to access file
+// 1. read file from command line
+// 2. edit data set and validate against schema
+// 3. write the data to file
+// 4. read file again
+// 5. console.log results
+const fsUsingCallback = require('./lib/fileCallback');
+const file = process.argv.slice(2)[0];
+
+const useCallbacks = cb => {
+
+};
+
+useCallbacks( (data) => console.log(data));
+
+
 
 const readfilePromise = util.promisify(fs.readFile);
 
 const errorHandler = (error) => {
   throw error;
 };
-
 /**
  * @function - async function that gets data from file
  * @param {*} file 
