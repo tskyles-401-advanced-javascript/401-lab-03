@@ -9,7 +9,7 @@
 * [travis](https://travis-ci.com/tskyles-401-advanced-javascript/401-lab-03)
 
 #### Documentation
-- `jsdocs` live-server from `/out` directory
+- `jsdocs` live-server from `/docs` directory
 
 ### Modules
   validator.js
