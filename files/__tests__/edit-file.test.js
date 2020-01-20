@@ -5,12 +5,12 @@ const editFile = require('../../edit-file');
 
 describe('file reader module', () => {
 
-  xit('returns data when given good file', async () => {
+  it('returns data when given good file', async () => {
     const file = `${__dirname}/files/data/person.json`;
     let data = await editFile.readFile(file);
     expect(data).toBeDefined();
   });
-  xit('returns an object when given good file', async () => {
+  it('returns an object when given good file', async () => {
     let file = `${__dirname}/files/data/person.json`;
 
     try {
@@ -32,7 +32,7 @@ describe('file reader module', () => {
 });
 
 describe('file writer module', () => {
-  xit('recieves data from reader module', async () => {
+  it('recieves data from reader module', async () => {
     let file = `${__dirname}/../../data/person.json`;
 
     try {
@@ -42,10 +42,10 @@ describe('file writer module', () => {
     catch (error) {expect(error).toBeFalsy();}
 
   });
-  xit('successfully writes if data is valid', () => {
+  it('successfully writes if data is valid', () => {
 
   });
-  xit('throws error if data recieved is not valid', () => {
+  it('throws error if data recieved is not valid', () => {
 
   });
 });
