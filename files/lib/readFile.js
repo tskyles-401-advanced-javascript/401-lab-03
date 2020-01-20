@@ -1,15 +1,10 @@
 'use strict';
 const fs = require('fs');
 const util = require('util');
+const handleError = require('./errorHandler');
 
 let readFilePromise = util.promisify(fs.readFile);
-/**
- * @function - Error Handling Function
- * @param {object} err 
- */
-function handleError(err) {
-  throw err;
-}
+
 /**
  * @function - async function that gets data from file
  * @param {*} file 
