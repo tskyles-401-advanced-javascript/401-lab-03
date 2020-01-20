@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = = {
+module.exports = {
   firstName: { type: 'string', required: true },
   lastName: { type: 'string', required: true },
   hair: { type: 'object', required: true },
