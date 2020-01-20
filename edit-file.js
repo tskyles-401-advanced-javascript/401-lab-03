@@ -1,6 +1,7 @@
 'use strict';
 
-const readFile = require('./files/lib/fileCallback');
+const readFile = require('./files/lib/readFile');
+const writeFile = require('./files/lib/writeFile');
 const validator = require('./files/lib/validator');
 const schema = require('./files/lib/schema');
 
@@ -111,8 +112,7 @@ async function saveFile(){
     data.favoriteFoods = ['tacos', 'ice cream'];
 
     if(validator.isValid(schema, data)){
-      console.log(data);
-      fs.writeFile(file, JSON.stringify(data), (error) => {
+      writeFile(file, JSON.stringify(data), (error) => {
         if(error) throw error;
         console.log('The file was saved');
       });
@@ -128,7 +128,7 @@ saveFile(file);
 /**
  * @module - exports readFile and saveFile
  */
-module.exports = { readFile, saveFile };
+module.exports = saveFile;
 
 
 
