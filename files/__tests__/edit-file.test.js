@@ -2,12 +2,13 @@
 
 jest.mock('fs');
 const editFile = require('../../edit-file');
+const readFile = require('../lib/readFile');
 
 describe('file reader module', () => {
 
   it('returns data when given good file', async () => {
-    const file = `${__dirname}/files/data/person.json`;
-    let data = await editFile.readFile(file);
+    const file = '../data/person.json';
+    let data = await readFile(file);
     expect(data).toBeDefined();
   });
   it('returns an object when given good file', async () => {

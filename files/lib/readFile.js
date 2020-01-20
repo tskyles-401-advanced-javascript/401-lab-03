@@ -12,7 +12,7 @@ let readFilePromise = util.promisify(fs.readFile);
 async function readFile(file){
   try {
     let data = await readFilePromise(file);
-    let object = await JSON.parse(data.toString().trim());
+    let object = await data.toString().trim();
     return object;
   }
   catch(err) {

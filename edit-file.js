@@ -16,13 +16,15 @@ async function saveFile(){
 
   try {
     let data = await readFile(file);
+    let object = JSON.parse(data);
+
     data.firstName = 'Travis';
     data.hair = { type: 'straight', color: 'brown' };
     data.lastName = 'Skyles';
     data.favoriteFoods = ['tacos', 'ice cream'];
 
-    if(validator.isValid(schema, data)){
-      writeFile(file, JSON.stringify(data), (error) => {
+    if(validator.isValid(schema, object)){
+      writeFile(file, JSON.stringify(object), (error) => {
         if(error) throw error;
         console.log('The file was saved');
       });
