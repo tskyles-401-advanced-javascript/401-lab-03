@@ -1,7 +1,9 @@
 'use strict';
 
+const fs = require('fs');
+
 const readFile = require('./files/lib/readFile');
-const writeFile = require('./files/lib/writeFile');
+// const writeFile = require('./files/lib/writeFile');
 const validator = require('./files/lib/validator');
 const schema = require('./files/lib/schema');
 const handleError = require('./files/lib/errorHandler');
@@ -23,18 +25,18 @@ async function saveFile(){
     data.lastName = 'Skyles';
     data.favoriteFoods = ['tacos', 'ice cream'];
 
-    if(validator.isValid(schema, object)){
-      writeFile(file, JSON.stringify(object), (error) => {
-        if(error) throw error;
-        console.log('The file was saved');
-      });
-    }
+    await validator.isValid(schema, object);
+
+
+    fs.writeFile(file, JSON.stringify(object, null), async (err) => {
+      console.log(err || object);
+    });
   }
   catch (error) {
     handleError(error);
   }
 }
-saveFile(file);
+
 
 /**
  * @module - exports readFile and saveFile
